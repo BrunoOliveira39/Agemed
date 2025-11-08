@@ -8,6 +8,9 @@
           rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
           crossorigin="anonymous">
+
+    <script src="https://unpkg.com/imask"></script>
+
 </head>
 <body>
 <div class="container mt-5">
@@ -36,5 +39,26 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Opções da máscara para telefone (celular e fixo)
+        const mascaraTelefone = {
+            mask: [
+                { mask: '(00) 0000-0000' }, // Telefone fixo
+                { mask: '(00) 00000-0000' } // Celular
+            ]
+        };
+
+        // Seleciona o campo de input pelo ID
+        const elementoTelefone = document.getElementById('telefone');
+
+        // Aplica a máscara
+        if (elementoTelefone) {
+            IMask(elementoTelefone, mascaraTelefone);
+        }
+    });
+</script>
+
 </body>
 </html>

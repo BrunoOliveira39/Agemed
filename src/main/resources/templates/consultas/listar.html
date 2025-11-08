@@ -17,7 +17,8 @@
             <a th:href="@{/consultas/cadastrar}" class="btn btn-success me-2">
                 <i class="fas fa-plus-circle"></i> Nova Consulta
             </a>
-            <a th:href="@{/medicos}" class="btn btn-outline-secondary me-2">Médicos</a>
+            <a th:href="@{/medicos}" class="btn btn-info me-2">Médicos</a>
+            <a th:href="@{/pacientes}" class="btn btn-info me-2">Pacientes</a>
             <a th:href="@{/logout}" class="btn btn-danger">Sair</a>
         </div>
     </div>
@@ -41,9 +42,10 @@
                     <tr>
                         <td th:text="${consulta.id}">1</td>
                         <td th:text="${#temporals.format(consulta.dataConsulta, 'dd/MM/yyyy HH:mm')}">20/10/2025 10:00</td>
-                        <td th:text="${consulta.paciente.nome}">João Silva</td>
-                        <td th:text="${consulta.medico.nome}">Dr. Exemplo</td>
-                        <td th:text="${consulta.medico.especialidade}">Clínico Geral</td>
+
+                        <td th:text="${consulta.paciente?.nome}">João Silva</td>
+                        <td th:text="${consulta.medico?.nome}">Dr. Exemplo</td>
+                        <td th:text="${consulta.medico?.especialidade}">Clínico Geral</td>
 
                         <td class="text-center">
                             <button class="btn btn-sm btn-outline-info"

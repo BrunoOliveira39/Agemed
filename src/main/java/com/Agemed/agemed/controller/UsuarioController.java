@@ -42,6 +42,6 @@ public class UsuarioController {
     // Redirecionamento da página inicial
     @GetMapping("/")
     public String home() {
-        return "redirect:/medicos"; // Redireciona para a listagem principal
+        return "redirect:/consultas"; // Redireciona para a listagem principal
     }
 }
