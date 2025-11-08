@@ -29,7 +29,15 @@
 
                 <div class="mb-3">
                     <label for="paciente" class="form-label">Paciente:</label>
-                    <input type="text" id="paciente" th:field="*{paciente}" class="form-control" required />
+                    <div class="mb-3">
+                        <label for="paciente" class="form-label">Paciente:</label>
+                        <select id="paciente" th:field="*{paciente}" class="form-select" required>
+                            <option value="">Selecione um Paciente</option>
+                            <option th:each="paciente : ${pacientes}"
+                                    th:value="${paciente.id}"
+                                    th:text="${paciente.nome}"></option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="mb-3">

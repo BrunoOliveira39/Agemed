@@ -13,7 +13,7 @@ public class ConsultaDTO {
 
     public ConsultaDTO(Consulta consulta) {
         this.dataConsulta = consulta.getDataConsulta();
-        this.paciente = consulta.getPaciente();
+        this.paciente = consulta.getPaciente().getNome();
         this.observacoes = consulta.getObservacoes();
     }
 }

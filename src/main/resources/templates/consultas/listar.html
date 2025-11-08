@@ -41,7 +41,7 @@
                     <tr>
                         <td th:text="${consulta.id}">1</td>
                         <td th:text="${#temporals.format(consulta.dataConsulta, 'dd/MM/yyyy HH:mm')}">20/10/2025 10:00</td>
-                        <td th:text="${consulta.paciente}">João Silva</td>
+                        <td th:text="${consulta.paciente.nome}">João Silva</td>
                         <td th:text="${consulta.medico.nome}">Dr. Exemplo</td>
                         <td th:text="${consulta.medico.especialidade}">Clínico Geral</td>
 

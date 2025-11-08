@@ -3,6 +3,7 @@ package com.Agemed.agemed.controller;
 import com.Agemed.agemed.model.Consulta;
 import com.Agemed.agemed.service.ConsultaService;
 import com.Agemed.agemed.service.MedicoService;
+import com.Agemed.agemed.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,9 @@ public class ConsultaController {
     private ConsultaService consultaService;
 
     @Autowired
+    private PacienteService pacienteService;
+
+    @Autowired
     private MedicoService medicoService; // Necessário para listar os médicos no formulário
 
     // LISTAR: Exibe a lista de consultas
@@ -31,8 +35,9 @@ public class ConsultaController {
     @GetMapping("/cadastrar")
     public String exibirFormulario(Model model) {
         model.addAttribute("consulta", new Consulta());
-        model.addAttribute("medicos", medicoService.findAll()); // Passa a lista de médicos
-        return "consultas/cadastrar"; // view: /templates/consultas/cadastrar.html
+        model.addAttribute("medicos", medicoService.findAll());
+        model.addAttribute("pacientes", pacienteService.findAll()); // Linha adicionada
+        return "consultas/cadastrar";
     }
 
     // CADASTRAR/EDITAR: Processa o envio do formulário
@@ -48,8 +53,9 @@ public class ConsultaController {
         Optional<Consulta> consulta = consultaService.findById(id);
         if (consulta.isPresent()) {
             model.addAttribute("consulta", consulta.get());
-            model.addAttribute("medicos", medicoService.findAll()); // Passa a lista de médicos
-            return "consultas/cadastrar"; // Reutiliza o template de cadastro
+            model.addAttribute("medicos", medicoService.findAll());
+            model.addAttribute("pacientes", pacienteService.findAll()); // Linha adicionada
+            return "consultas/cadastrar";
         }
         return "redirect:/consultas";
     }
@@ -60,4 +66,5 @@ public class ConsultaController {
         consultaService.deleteById(id);
         return "redirect:/consultas";
     }
+
 }
